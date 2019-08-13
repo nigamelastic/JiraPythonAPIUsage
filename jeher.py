@@ -43,7 +43,6 @@ for f in files:
     descriptionText=descriptionText + "\n\n\nTop Issues for each IP Address :\n\n" +midText+ "Please check the attached scan report for more details. "
 
     new_issue = jira.create_issue(project=projectName, summary=summaryValue,description=descriptionText , assignee={'name': username}, issuetype={'name': 'Task'},  priority={'name': 'Medium'}, security={'name': 'private (Team)'})
-    jira.resolution("Done",new_issue)
     jira.add_attachment(issue=new_issue, attachment=f)
     jira.transition_issue(issue, transition='Done',resolution={'name': 'Done'})
     print(new_issue.fields.status)
