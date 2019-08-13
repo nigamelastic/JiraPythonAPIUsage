@@ -12,7 +12,7 @@ config.read("happy.config")
 serverName = config.get('JIRA', 'serverName')
 password = config.get('JIRA', 'password')
 username = config.get('JIRA', 'username')
-projectName = <ProjectName>
+projectName = config.get('JIRA', 'project')
 
 options = {
    'server': serverName,
