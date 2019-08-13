@@ -5,13 +5,14 @@ import sys
 import os
 import configparser
 import lxml.html
+import getpass
 
 
 config = configparser.ConfigParser()
 config.read("happy.config")
 serverName = config.get('JIRA', 'serverName')
-password = config.get('JIRA', 'password')
-username = config.get('JIRA', 'username')
+username = input("Username:")
+password = getpass.getpass("Password for " + username + ":")
 projectName = config.get('JIRA', 'project')
 
 options = {
@@ -19,6 +20,7 @@ options = {
    'verify': False,
    }
 jira = JIRA(options, basic_auth=(username,password))
+
 files = []
 
 for file in os.listdir(sys.argv[1]):
