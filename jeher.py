@@ -44,5 +44,5 @@ for f in files:
 
     new_issue = jira.create_issue(project=projectName, summary=summaryValue,description=descriptionText , assignee={'name': username}, issuetype={'name': 'Task'},  priority={'name': 'Medium'}, security={'name': 'private (Team)'})
     jira.add_attachment(issue=new_issue, attachment=f)
-    jira.transition_issue(issue, transition='Done',resolution={'name': 'Done'})
+    jira.transition_issue(new_issue, transition='Done',resolution={'name': 'Done'})
     print(new_issue.fields.status)
